@@ -105,22 +105,41 @@ namespace WindowsFormsApp2
                 if (ochered > 0) //если есть очередь
                 {
 
-                    
-                    if (Ser1IsFree) //включаем свободный сервер 1
+                    if(Ser1IsFree&&Ser2IsFree) //если оба свободны, выбираем тот что работал меньше
                     {
-                        nextS1 = i + r.Next(minS, maxS);
-                        Ser1IsFree = false;
-                        ochered--;
-                    }
-                    else
-                    {
-                        if (Ser2IsFree) //включаем свободный сервер 2
+                        if(totalWorkTime1 < totalWorkTime2)
+                        {
+                            nextS1 = i + r.Next(minS, maxS);
+                            Ser1IsFree = false;
+                            ochered--;
+                        }
+                        else
                         {
                             nextS2 = i + r.Next(minS, maxS);
                             Ser2IsFree = false;
-                            ochered--;
+                            ochered--; 
                         }
                     }
+                    else
+                    {
+                        if (Ser1IsFree) //включаем свободный сервер 1
+                        {
+                            nextS1 = i + r.Next(minS, maxS);
+                            Ser1IsFree = false;
+                            ochered--;
+                        }
+                        else
+                        {
+                            if (Ser2IsFree) //включаем свободный сервер 2
+                            {
+                                nextS2 = i + r.Next(minS, maxS);
+                                Ser2IsFree = false;
+                                ochered--;
+                            }
+                        }
+                    }
+
+                    
 
                 }
                 
