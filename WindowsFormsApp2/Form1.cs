@@ -35,6 +35,7 @@ namespace WindowsFormsApp2
 
             int ModelTime = 100000; //время моделирования
             int ochered = 0; //очередь
+            int maxOchered = 50; //ограниченная очередь
 
             double totalZ = 1; //всего заявок поступило
 
@@ -52,8 +53,8 @@ namespace WindowsFormsApp2
             int maxZ = 7;
 
             //Настройки интервала серверов
-            int minS = 5;
-            int maxS = 7;
+            int minS = 10;
+            int maxS = 17;
 
 
 
@@ -80,7 +81,10 @@ namespace WindowsFormsApp2
                 {
                     nextZ = i + r.Next(minZ, maxZ); //время прихода следующей заявки 
                     totalZ++;
-                    ochered++;
+
+                    if (ochered <= maxOchered) ochered++;
+                    else TotalLost++;
+
                 }
 
 
@@ -154,7 +158,7 @@ namespace WindowsFormsApp2
 
             ProcS1 = totalWorkTime1 / ModelTime * 100;
             ProcS2 = totalWorkTime2 / ModelTime * 100;
-            TotalLost = totalZ - totalObsluzh1 - totalObsluzh2 - ochered;
+            TotalLost += totalZ - totalObsluzh1 - totalObsluzh2 - ochered;
         }
 
         
