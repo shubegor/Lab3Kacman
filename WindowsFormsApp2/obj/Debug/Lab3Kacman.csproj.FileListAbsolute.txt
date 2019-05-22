@@ -7,3 +7,13 @@ C:\Users\eos5\Desktop\Lab3Kacman-master\WindowsFormsApp2\obj\Debug\Lab3Kacman.cs
 C:\Users\eos5\Desktop\Lab3Kacman-master\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
 C:\Users\eos5\Desktop\Lab3Kacman-master\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
 C:\Users\eos5\Desktop\Lab3Kacman-master\WindowsFormsApp2\obj\Debug\Lab3Kacman.csproj.GenerateResource.Cache
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe.config
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.exe
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\bin\Debug\WindowsFormsApp2.pdb
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\Lab3Kacman.csprojResolveAssemblyReference.cache
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Form1.resources
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.Properties.Resources.resources
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\Lab3Kacman.csproj.GenerateResource.Cache
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\Lab3Kacman.csproj.CoreCompileInputs.cache
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.exe
+C:\Users\Egor\Documents\Lab3Kacman\WindowsFormsApp2\obj\Debug\WindowsFormsApp2.pdb

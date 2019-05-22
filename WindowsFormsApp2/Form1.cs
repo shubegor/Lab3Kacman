@@ -33,19 +33,19 @@ namespace WindowsFormsApp2
             Random r = new Random(0);
            
 
-            int ModelTime = 100000;
-            int ochered = 0;
+            int ModelTime = 100000; //время моделирования
+            int ochered = 0; //очередь
 
-            double totalZ = 1;
+            double totalZ = 1; //всего заявок поступило
 
-            double totalObsluzh1 = 0;
-            double totalObsluzh2 = 0;
-            double TotalLost = 0;
+            double totalObsluzh1 = 0; //всего заявок обслужено сервером 1
+            double totalObsluzh2 = 0; //всего заявок обслужено сервером 2
+            double TotalLost = 0; //всего заявок потеряно
 
-            double totalWorkTime1 = 0;
-            double totalWorkTime2 = 0;
-            double ProcS1 = 0;
-            double ProcS2 = 0;
+            double totalWorkTime1 = 0; //всего работал сервер 1
+            double totalWorkTime2 = 0; //всего работал сервер 2
+            double ProcS1 = 0; //процент загрузки сервера 1
+            double ProcS2 = 0; //процент загрузки сервера 2
 
             //Настройки интервала заявок
             int minZ = 5;
@@ -57,32 +57,28 @@ namespace WindowsFormsApp2
 
 
 
-            int nextZ = 0;
-            int nextS1 = 0;
-            int nextS2 = 0;
-            bool Ser1IsFree = true;
-            bool Ser2IsFree = true;
+            int nextZ = 0;  //время прихода следующей заявки
+            int nextS1 = 0; //время освобождения сервера 1
+            int nextS2 = 0; //время освобождения сервера 2
+            bool Ser1IsFree = true; //свободен ли сервер 1
+            bool Ser2IsFree = true; //свободен ли сервер 2
 
 
 
-            Series mySeriesOfPoint = new Series("Sinus")
+            Series mySeriesOfPoint = new Series("Sinus") //точки графика
             {
                 ChartType = SeriesChartType.Line,
                 ChartArea = "Math functions"
             };
-
-
-
-
-            List<int> och = new List<int>();
+            
         
-            nextZ = r.Next(minZ, maxZ);
+            nextZ = r.Next(minZ, maxZ); //время прихода первой заявки 
 
-            for (int i = 0; i < ModelTime; i++)
+            for (int i = 0; i < ModelTime; i++) //движение времени
             {
-                if (i == nextZ) //новая заявка
+                if (i == nextZ) //если пришла новая заявка
                 {
-                    nextZ = i + r.Next(minZ, maxZ);
+                    nextZ = i + r.Next(minZ, maxZ); //время прихода следующей заявки 
                     totalZ++;
                     ochered++;
                 }
