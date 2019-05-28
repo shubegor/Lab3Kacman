@@ -31,11 +31,11 @@ namespace WindowsFormsApp2
 
 
             Random r = new Random(0);
+
            
 
             int ModelTime = 100000; //время моделирования
             int ochered = 0; //очередь
-            int maxOchered = 50; //ограниченная очередь
 
             double totalZ = 1; //всего заявок поступило
 
@@ -49,12 +49,13 @@ namespace WindowsFormsApp2
             double ProcS2 = 0; //процент загрузки сервера 2
 
             //Настройки интервала заявок
-            int minZ = 5;
-            int maxZ = 7;
+            int minZ = int.Parse(MinZTextBox.Text);
+            int maxZ = int.Parse(MaxZTextBox.Text);
+
 
             //Настройки интервала серверов
-            int minS = 10;
-            int maxS = 17;
+            int minS = int.Parse(MinSTextBox.Text);
+            int maxS = int.Parse(MaxSTextBox.Text);
 
 
 
@@ -81,10 +82,7 @@ namespace WindowsFormsApp2
                 {
                     nextZ = i + r.Next(minZ, maxZ); //время прихода следующей заявки 
                     totalZ++;
-
-                    if (ochered <= maxOchered) ochered++;
-                    else TotalLost++;
-
+                    ochered++;
                 }
 
 
@@ -109,41 +107,22 @@ namespace WindowsFormsApp2
                 if (ochered > 0) //если есть очередь
                 {
 
-                    if(Ser1IsFree&&Ser2IsFree) //если оба свободны, выбираем тот что работал меньше
+                    
+                    if (Ser1IsFree) //включаем свободный сервер 1
                     {
-                        if(totalWorkTime1 < totalWorkTime2)
-                        {
-                            nextS1 = i + r.Next(minS, maxS);
-                            Ser1IsFree = false;
-                            ochered--;
-                        }
-                        else
-                        {
-                            nextS2 = i + r.Next(minS, maxS);
-                            Ser2IsFree = false;
-                            ochered--; 
-                        }
+                        nextS1 = i + r.Next(minS, maxS);
+                        Ser1IsFree = false;
+                        ochered--;
                     }
                     else
                     {
-                        if (Ser1IsFree) //включаем свободный сервер 1
+                        if (Ser2IsFree) //включаем свободный сервер 2
                         {
-                            nextS1 = i + r.Next(minS, maxS);
-                            Ser1IsFree = false;
+                            nextS2 = i + r.Next(minS, maxS);
+                            Ser2IsFree = false;
                             ochered--;
                         }
-                        else
-                        {
-                            if (Ser2IsFree) //включаем свободный сервер 2
-                            {
-                                nextS2 = i + r.Next(minS, maxS);
-                                Ser2IsFree = false;
-                                ochered--;
-                            }
-                        }
                     }
-
-                    
 
                 }
                 
@@ -158,9 +137,19 @@ namespace WindowsFormsApp2
 
             ProcS1 = totalWorkTime1 / ModelTime * 100;
             ProcS2 = totalWorkTime2 / ModelTime * 100;
-            TotalLost += totalZ - totalObsluzh1 - totalObsluzh2 - ochered;
+            TotalLost = totalZ - totalObsluzh1 - totalObsluzh2 - ochered;
+
+            TotalLostTextBox.Text = "Потеряно: " + TotalLost;
+            TotalZTextBox.Text = "Всего заявок: " + totalZ;
+            Proc1TextBox.Text = "Загрузка сервера 1: " + ProcS1 + "%";
+            Proc2TextBox.Text = "Загрузка сервера 2: " + ProcS2 + "%";
+            OcheredTextBox.Text = "Очередь: " + ochered;
+
         }
 
-        
+        private void button1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
